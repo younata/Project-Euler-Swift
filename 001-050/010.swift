@@ -1,5 +1,7 @@
 #!/usr/bin/swift
 
+import Darwin
+
 class PrimeGenerator : GeneratorType {
     typealias Element = Int
 
@@ -15,7 +17,11 @@ class PrimeGenerator : GeneratorType {
         }
         while true {
             var passed = true
+            let sqrn = Int(ceil(sqrt(Double(n))))
             for p in primes {
+                if (p > sqrn) {
+                    break
+                }
                 if n % p == 0 {
                     passed = false
                     break
@@ -59,7 +65,7 @@ func main() {
         }
         ret += i
     }
-    println("\(ret)")
+    println("\n\(ret)")
 }
 
 main()
